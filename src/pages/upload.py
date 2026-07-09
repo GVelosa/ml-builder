@@ -1,15 +1,42 @@
 import flet as ft
 
+from src.components.data_table import data_table
+
 from src.modules.side_bar import side_bar
 from src.modules.load_file import load_file
 
 def view_upload_page(page:ft.Page):
+
+    pick_btn = ft.Button("Selecionar arquivo", on_click=lambda e: page.run_task(file_picker))
+    file_info = ft.Text(value="", visible=False)
+
+    top_box = ft.Container(
+        expand=1,
+        padding=20,
+        border=ft.Border(left=ft.BorderSide(1, ft.Colors.GREY_300), top=ft.BorderSide(1, ft.Colors.GREY_300), right=ft.BorderSide(1, ft.Colors.GREY_300), bottom=ft.BorderSide(1, ft.Colors.GREY_300)),
+        content=ft.Column(
+            controls=[pick_btn, file_info]
+        )
+    )
+
+    table_placeholder = ft.Column(controls=[], scroll=ft.ScrollMode.AUTO, expand=True)
+
+    bottom_box = ft.Container(
+        expand=3,
+        padding=20,
+        border=ft.Border(left=ft.BorderSide(1, ft.Colors.GREY_300), top=ft.BorderSide(1, ft.Colors.GREY_300), right=ft.BorderSide(1, ft.Colors.GREY_300), bottom=ft.BorderSide(1, ft.Colors.GREY_300)),
+        content=table_placeholder,
+    )
+
     async def file_picker():
         result = await load_file()
-        file_name.value = f"O arquivo selecionado foi: {result["name"]}"
+        pick_btn.text = "Selecionar outro arquivo"
+        file_info.value = result["name"]
+        file_info.visible = True
+        table_placeholder.controls = [data_table(result["df"])]
+        page.update()
 
-    file_name = ft.Text(value="")
-    upload_page=ft.Container(
+    upload_page = ft.Container(
         expand=True,
         content=ft.Row(
             expand=True,
@@ -18,14 +45,12 @@ def view_upload_page(page:ft.Page):
                 side_bar(page),
                 ft.Container(
                     expand=True,
-                    alignment=ft.Alignment.CENTER,
+                    padding=20,
                     content=ft.Column(
-                        alignment=ft.MainAxisAlignment.CENTER,
-                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        expand=True,
                         controls=[
-                            ft.Button("Escolha um arquivo", on_click=file_picker),
-                            file_name,
-                            ft.Text("Texto de teste para ver se está aparecendo"),
+                            top_box,
+                            bottom_box,
                         ]
                     )
                 )
