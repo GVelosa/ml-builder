@@ -1,5 +1,7 @@
 import flet as ft
 
+from src.models.ml_projects import MLProject
+
 from src.pages.app import view_home_page
 from src.pages.upload import view_upload_page
 from src.pages.config import view_config_page
@@ -10,6 +12,7 @@ from src.pages.results import view_results_page
 
 def main(page: ft.Page):
     page.title = "ML Builder"
+    ml_project = MLProject()
 
     def route_change():
         page.views.clear()
@@ -30,7 +33,7 @@ def main(page: ft.Page):
                     align=ft.Alignment.CENTER,
                     route="/upload",
                     controls=[
-                        view_upload_page(page)
+                        view_upload_page(page, ml_project)
                     ],
                 )
             )
@@ -40,7 +43,7 @@ def main(page: ft.Page):
                     align=ft.Alignment.CENTER,
                     route="/config",
                     controls=[
-                        view_config_page(page)
+                        view_config_page(page, ml_project)
                     ],
                 )
             )
@@ -50,7 +53,7 @@ def main(page: ft.Page):
                     align=ft.Alignment.CENTER,
                     route="/preprocessing",
                     controls=[
-                        view_preprocessing_page(page)
+                        view_preprocessing_page(page, ml_project)
                     ],
                 )
             )
@@ -60,7 +63,7 @@ def main(page: ft.Page):
                     align=ft.Alignment.CENTER,
                     route="/model_parameters",
                     controls=[
-                        view_model_parameters_page(page)
+                        view_model_parameters_page(page, ml_project)
                     ],
                 )
             )
@@ -70,7 +73,7 @@ def main(page: ft.Page):
                     align=ft.Alignment.CENTER,
                     route="/training",
                     controls=[
-                        view_training_page(page)
+                        view_training_page(page, ml_project)
                     ],
                 )
             )
@@ -79,8 +82,8 @@ def main(page: ft.Page):
                 ft.View(
                     align=ft.Alignment.CENTER,
                     route="/results",
-                    controls=[
-                        view_results_page(page)
+                    controls=[ 
+                        view_results_page(page, ml_project)
                     ],
                 )
             )

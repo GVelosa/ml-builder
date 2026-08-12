@@ -5,8 +5,11 @@ from src.components.data_table import data_table
 from src.modules.side_bar import side_bar
 from src.modules.load_file import load_file
 
-def view_upload_page(page:ft.Page):
+from src.models.ml_projects import MLProject
 
+def view_upload_page(page:ft.Page, ml_project: MLProject):
+
+    
     pick_btn = ft.Button("Selecionar arquivo", on_click=lambda e: page.run_task(file_picker))
     file_info = ft.Text(value="", visible=False)
 
@@ -34,6 +37,8 @@ def view_upload_page(page:ft.Page):
         file_info.value = result["name"]
         file_info.visible = True
         table_placeholder.controls = [data_table(result["df"])]
+        ml_project.dataframe = result["df"]
+        ml_project.name = result["name"]
         page.update()
 
     upload_page = ft.Container(

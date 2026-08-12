@@ -2,7 +2,9 @@ import flet as ft
 
 from src.modules.side_bar import side_bar
 
-def view_preprocessing_page(page:ft.Page):
+from src.models.ml_projects import MLProject
+
+def view_preprocessing_page(page:ft.Page, ml_project:MLProject):
 
     preprocessing_page=ft.Container(
         expand=True,
