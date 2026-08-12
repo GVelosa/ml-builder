@@ -1,0 +1,43 @@
+# Bytecode e caches gerados pelo Python.
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes virtuais locais.
+.venv/
+venv/
+env/
+ENV/
+
+# Artefatos de build e distribuição.
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Caches de ferramentas de teste, análise e cobertura.
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Configurações locais de editores e IDEs.
+.idea/
+.vscode/
+*.code-workspace
+
+# Arquivos temporários e logs.
+*.log
+*.tmp
+*.stackdump
+
+# Arquivos gerados pelo sistema operacional.
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Variáveis de ambiente e segredos locais.
+.env
+.env.*
+!.env.example
