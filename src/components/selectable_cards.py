@@ -28,7 +28,7 @@ def selectable_cards(options: list[SelectableCardOption], selected_value: str | 
         if is_selected:
             return ft.Border.all(
                 width=2,
-                color=ft.Colors.BLUE_400,
+                color=colors.SELECTED_BORDER,
             )
         return ft.Border.all(
             width=1,

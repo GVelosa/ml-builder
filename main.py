@@ -1,6 +1,10 @@
 import flet as ft
 
+from src.components.app_bar import app_bar
+
 from src.models.ml_projects import MLProject
+
+from src.theme import colors
 
 from src.pages.app import view_home_page
 from src.pages.upload import view_upload_page
@@ -20,7 +24,8 @@ def main(page: ft.Page):
             ft.View(
                 align=ft.Alignment.CENTER,
                 route="/",
-                # bgcolor=colors.WHITE,
+                appbar=app_bar(),
+                bgcolor=colors.BACKGROUND,
                 controls=[
                     view_home_page(page)
                 ],
@@ -32,6 +37,8 @@ def main(page: ft.Page):
                 ft.View(
                     align=ft.Alignment.CENTER,
                     route="/upload",
+                    appbar=app_bar(),
+                    bgcolor=colors.BACKGROUND,
                     controls=[
                         view_upload_page(page, ml_project)
                     ],
@@ -42,6 +49,8 @@ def main(page: ft.Page):
                 ft.View(
                     align=ft.Alignment.CENTER,
                     route="/config",
+                    appbar=app_bar(),
+                    bgcolor=colors.BACKGROUND,
                     controls=[
                         view_config_page(page, ml_project)
                     ],
@@ -52,6 +61,8 @@ def main(page: ft.Page):
                 ft.View(
                     align=ft.Alignment.CENTER,
                     route="/preprocessing",
+                    appbar=app_bar(),
+                    bgcolor=colors.BACKGROUND,
                     controls=[
                         view_preprocessing_page(page, ml_project)
                     ],
@@ -62,6 +73,8 @@ def main(page: ft.Page):
                 ft.View(
                     align=ft.Alignment.CENTER,
                     route="/model_parameters",
+                    appbar=app_bar(),
+                    bgcolor=colors.BACKGROUND,
                     controls=[
                         view_model_parameters_page(page, ml_project)
                     ],
@@ -72,6 +85,8 @@ def main(page: ft.Page):
                 ft.View(
                     align=ft.Alignment.CENTER,
                     route="/training",
+                    appbar=app_bar(),
+                    bgcolor=colors.BACKGROUND,
                     controls=[
                         view_training_page(page, ml_project)
                     ],
@@ -82,6 +97,8 @@ def main(page: ft.Page):
                 ft.View(
                     align=ft.Alignment.CENTER,
                     route="/results",
+                    appbar=app_bar(),
+                    bgcolor=colors.BACKGROUND,
                     controls=[ 
                         view_results_page(page, ml_project)
                     ],

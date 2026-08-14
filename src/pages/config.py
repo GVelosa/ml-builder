@@ -7,6 +7,8 @@ from src.modules.side_bar import side_bar
 from src.modules.dataset_summary import summarize_dataset
 from src.models.ml_projects import MLProject
 
+from src.theme import colors
+
 def view_config_page(page:ft.Page, ml_project:MLProject):
 
     def change_problem_type(value):
