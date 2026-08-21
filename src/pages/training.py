@@ -1,6 +1,7 @@
 import flet as ft
 
 from src.modules.side_bar import side_bar
+from src.modules.workflow import complete_step
 
 from src.models.ml_projects import MLProject
 
@@ -12,7 +13,7 @@ def view_training_page(page:ft.Page, ml_project:MLProject):
             expand=True,
             vertical_alignment=ft.CrossAxisAlignment.STRETCH,
             controls=[
-                side_bar(page),
+                side_bar(page, ml_project),
                 ft.Container(
                     expand=True,
                     alignment=ft.Alignment.CENTER,

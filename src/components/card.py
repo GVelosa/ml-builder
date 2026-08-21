@@ -5,6 +5,7 @@ from src.theme import colors
 
 def card(text, icon_name=None, on_click=None):
     return ft.Container(
+        width=180,
         padding=10,
         bgcolor=colors.SURFACE,
         on_click=on_click,

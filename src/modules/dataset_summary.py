@@ -6,7 +6,6 @@ import pandas as pd
 # Importa funções específicas para identificar os tipos das colunas de forma segura.
 from pandas.api.types import (
     is_bool_dtype,
-    is_categorical_dtype,
     is_datetime64_any_dtype,
     is_numeric_dtype,
     is_object_dtype,
@@ -35,7 +34,7 @@ def detect_column_type(column: pd.Series) -> str:
         return "number"
 
     # Identifica colunas categóricas criadas explicitamente com o tipo category.
-    if is_categorical_dtype(column.dtype):
+    if isinstance(column.dtype, pd.CategoricalDtype):
         return "category"
 
     # Considera strings e objetos como texto nesta primeira versão da detecção.

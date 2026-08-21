@@ -15,11 +15,12 @@ def view_home_page(page:ft.Page):
                 padding=20,
                 content=ft.Column(
                     expand=True,
-                    spacing=20,
+                    # spacing=20,
                     alignment=ft.MainAxisAlignment.START,
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     controls=[
                         ft.Container(
+                            padding=20,
                             alignment=ft.Alignment.CENTER,
                             border_radius=10,
                             bgcolor = colors.WHITE,
@@ -34,7 +35,7 @@ def view_home_page(page:ft.Page):
                                 controls=[
                                     ft.Column(
                                         expand=True,
-                                        alignment=ft.MainAxisAlignment.SPACE_AROUND,
+                                        # alignment=ft.MainAxisAlignment.SPACE_AROUND,
                                         controls=[
                                             ft.Text("Build machine learning models without the complexity", color=colors.BLACK, size=30, weight=ft.FontWeight.W_700),
                                             ft.Text("ML Builder guides you through every step of the machine learning process - from your data to accurate predictions.", color=colors.BLACK, size=18),
@@ -67,10 +68,10 @@ def view_home_page(page:ft.Page):
                                             ),
                                         ]
                                     ),
-                                    ft.Image(
-                                        src="src/assets/hero.png",
-                                        width=400,
-                                    )
+                                    # ft.Image(
+                                    #     src="src/assets/hero.png",
+                                    #     width=400,
+                                    # )
                                 ]
                             ),
                         ),

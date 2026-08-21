@@ -1,5 +1,7 @@
-from typing import NotRequired, TypedDict
 import flet as ft
+from typing import NotRequired, TypedDict
+
+from src.theme import colors
 
 class SelectableCardOption(TypedDict):
     label: str
@@ -44,7 +46,7 @@ def selectable_cards(options: list[SelectableCardOption], selected_value: str | 
             is_selected = card_control.data == selected_value
             card_control.border = create_border(is_selected)
             card_control.bgcolor = (
-                ft.Colors.BLUE_50
+                ft.Colors.BLUE_200
                 if is_selected
                 else ft.Colors.TRANSPARENT
             )
@@ -62,11 +64,11 @@ def selectable_cards(options: list[SelectableCardOption], selected_value: str | 
 
         if icon is not None:
             card_content.append(
-                ft.Icon(icon=icon)
+                ft.Icon(icon=icon, color=colors.TEXT)
             )
 
         card_content.append(
-            ft.Text(option["label"])
+            ft.Text(option["label"], color=colors.TEXT)
         )
 
         option_value = option["value"]
@@ -76,7 +78,7 @@ def selectable_cards(options: list[SelectableCardOption], selected_value: str | 
             border=create_border(is_selected),
             border_radius=10,
             bgcolor=(
-                ft.Colors.BLUE_50
+                ft.Colors.BLUE_200
                 if is_selected
                 else ft.Colors.TRANSPARENT
             ),
